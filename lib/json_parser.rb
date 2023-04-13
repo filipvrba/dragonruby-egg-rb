@@ -16,6 +16,17 @@ class JsonParser
     end
   end
 
+  def on_handler symbol, handler, &block
+    unless @db.include?(symbol.to_s)
+      block.call(false) if block
+      value = handler.call()
+      if value
+        parse symbol, value
+        block.call(true, value) if block
+      end
+    end
+  end
+
   def parse symbols, value = nil, delete = nil
     symbols_join = ""
     if symbols.class.name == "Array"
