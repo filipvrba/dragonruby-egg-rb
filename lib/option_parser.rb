@@ -13,7 +13,7 @@ class OptionParser
     end
 
     def self.last_arg(args = ARGV)
-        args.length >= 1 ? args[args.length - 1] : nil
+        args.length >= 1 ? args[args.length - 1] : ''
     end
 
     def initialize(args = ARGV)

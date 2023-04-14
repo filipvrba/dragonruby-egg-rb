@@ -12,24 +12,26 @@ module Dre
     sym = :root_path
     root_path = @options[sym]
     if root_path
-      l_set_print = lambda do |rp|
-        DragonrubyEgg::Event.print('SET', "#{sym.to_s}: #{rp.to_s}")
-      end
-
       if root_path == ''
         DragonrubyEgg::Event.print('WARNING', "An empty string for" +
           "the root path is not acceptable.")
         @configuration.delete(sym)
         configuration_on()
-        l_set_print.call(@configuration.parse(sym))
       else
         @configuration.parse(sym, root_path)
-        l_set_print.call(root_path)
+        DragonrubyEgg::Event.print('SET', "#{sym.to_s}: #{root_path.to_s}")
       end
     end
   end
 
-  
+  def main_state
+    if options_empty?
+      DragonrubyEgg::Executable.dragonruby(@options[:path])
+    elsif @options[:is_docs]
+      DragonrubyEgg::Executable.docs()
+    end
+  end
 end
 
 Dre.root_path_state()
+Dre.main_state()

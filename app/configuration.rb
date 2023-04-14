@@ -2,6 +2,8 @@ module Dre
   module_function
 
   @configuration = JsonParser.new File.join(ROOT, 'config/default.json')
+  h_root_path = lambda { |_| @configuration.parse(:root_path) }
+  DragonrubyEgg::Event.add(:root_path, h_root_path)
 
   def configuration_on
     @configuration.on_handler(:root_path,
@@ -25,9 +27,7 @@ module Dre
           "of the root path is performed."
         )
       else
-        DragonrubyEgg::Event.print('ROOT-PATH',
-          "The root path was set to this '#{r_path}' path."
-        )
+        DragonrubyEgg::Event.print('SET', "root_path: #{r_path}")
       end
     end
   end

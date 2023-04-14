@@ -30,5 +30,19 @@ module DragonrubyEgg
 
       return nil
     end
+
+    def dragonruby arg
+      root_path = Event::emit(:root_path)
+      path = File.join(root_path, Constants::DR_EXES[:dr])
+      system("#{path} #{arg}")
+    end
+
+    def docs
+      web_brower = %x(xdg-settings get default-web-browser)
+        .sub(/\..*$/, '').rstrip
+      root_path = Event::emit(:root_path)
+      doc_file = File.join(root_path, Constants::DR_DOCS)
+      system("#{web_brower} #{doc_file}")
+    end
   end
 end
