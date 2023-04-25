@@ -52,7 +52,22 @@ module DragonrubyEgg
       end
       module_path = "#{path}/modules/#{repo_module}"
 
-      system("git clone --recurse-submodules #{module_url}.git '#{module_path}'")
+      is_install = system("git clone --recurse-submodules #{module_url}.git '#{module_path}'")
+      if is_install
+        Event.print('INSTALL', "The '#{repo_module}' module " +
+          "has been installed in this '.#{module_path.sub(path, '')}' folder.")
+      end
+    end
+
+    def new_project name, path
+      root_path = Event::emit(:root_path)
+      unless path
+        path = Dir.pwd
+      end
+      is_copy = system("cp -r '#{root_path}/mygame' '#{path}/#{name}'")
+      if is_copy
+        Event.print('NEW', "The '#{name}' project has been created.")
+      end
     end
   end
 end

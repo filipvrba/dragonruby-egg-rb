@@ -3,7 +3,8 @@ module Dre
     is_docs: false,
     root_path: nil,
     path: nil,
-    install: nil
+    install: nil,
+    new: nil
   }
   @options[:path] = OptionParser.last_arg if Dir.exist?(OptionParser.last_arg)
 
@@ -13,6 +14,9 @@ module Dre
       "Usage: #{APP_NAME} [options] [path]\n" +
       "\nOptions:"
     )
+    parser.on( "new NAME", "", "They will create a new game project.") do |name|
+      @options[:new] = name
+    end
     parser.on( "install MODULE", "", "Installs the module in the working folder.\n" +
                "(Example: install dr-core-rb,\n" +
                "install filipvrba.dr-core-rb)\n" ) do |repo_module|

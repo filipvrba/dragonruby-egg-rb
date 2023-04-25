@@ -37,6 +37,8 @@ module Dre
         DragonrubyEgg::Event.print('WARNING', "A working path must " +
           "be defined to install the module.")
       end
+    elsif @options[:new]
+      DragonrubyEgg::Executable.new_project(@options[:new], @options[:path])
     end
   end
 end
