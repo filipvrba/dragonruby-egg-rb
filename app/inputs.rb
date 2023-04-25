@@ -1,6 +1,6 @@
 module Dre
   h_correct = lambda do |d|
-    print "Install this '#{d[0]}.#{d[1]}' module? (y/n): "
+    print "Install this '#{d[0]}.#{d[1]}' module? (y/N): "
     input = STDIN.gets.chomp
     result = false
 
