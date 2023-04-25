@@ -1,5 +1,5 @@
 module DragonrubyEgg
-  VERSION = "1.0.0"
+  VERSION = "1.0.1"
   module Constants
     APP_FULL_NAME = 'DragonRuby-Egg'
     DR_EXES = {
