@@ -1,6 +1,7 @@
 module Dre
   @options = {
     is_docs: false,
+    is_egg: false,
     root_path: nil,
     path: nil,
     install: nil,
@@ -21,6 +22,11 @@ module Dre
                "(Example: install dr-core-rb,\n" +
                "install filipvrba.dr-core-rb)\n" ) do |repo_module|
       @options[:install] = repo_module
+    end
+    parser.on( "-e", "--egg", "This opens a page in the main browser\n" +
+               "that lists all the modules that can be\n"+
+               "installed in the game project." ) do
+      @options[:is_egg] = true
     end
     parser.on( "-d", "--docs", "Opens the documentation for DragonRuby\n" +
                                "in the main browser." ) do

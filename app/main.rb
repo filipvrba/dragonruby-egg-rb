@@ -30,6 +30,8 @@ module Dre
       DragonrubyEgg::Executable.dragonruby(@options[:path])
     elsif @options[:is_docs]
       DragonrubyEgg::Executable.docs()
+    elsif @options[:is_egg]
+      DragonrubyEgg::Executable.egg()
     elsif @options[:install]
       if @options[:path]
         DragonrubyEgg::Executable.install(@options[:install], @options[:path])

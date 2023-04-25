@@ -8,5 +8,6 @@ module DragonrubyEgg
       drp: 'dragonruby-publish'
     }
     DR_DOCS = 'docs/docs.html'
+    DRE_URL = 'https://dragonruby-egg-ui-rjs.vercel.app/'
   end
 end
