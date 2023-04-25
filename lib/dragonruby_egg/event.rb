@@ -14,7 +14,7 @@ module DragonrubyEgg
         return
       end
 
-      puts "#{Time.now.strftime("%l:%M:%S %p").lstrip} [#{APP_NAME}] #{event} | #{message}"
+      puts("#{Time.now.strftime("%l:%M:%S %p").lstrip} [#{APP_NAME}] #{event} | #{message}")
     end
 
     def add(symbol, handler)

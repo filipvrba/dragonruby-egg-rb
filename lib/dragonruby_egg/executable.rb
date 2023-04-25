@@ -42,7 +42,17 @@ module DragonrubyEgg
         .sub(/\..*$/, '').rstrip
       root_path = Event::emit(:root_path)
       doc_file = File.join(root_path, Constants::DR_DOCS)
-      system("#{web_brower} #{doc_file}")
+      system("#{web_brower} #{doc_file} &")
+    end
+
+    def install repo_module, path
+      module_url = Modules.get_module_url(repo_module)
+      unless module_url
+        return
+      end
+      module_path = "#{path}/modules/#{repo_module}"
+
+      system("git clone --recurse-submodules #{module_url}.git '#{module_path}'")
     end
   end
 end

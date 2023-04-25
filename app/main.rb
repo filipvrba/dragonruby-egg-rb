@@ -4,6 +4,7 @@ require 'json_parser'
 
 require_relative './configuration'
 require_relative './arguments'
+require_relative './inputs'
 
 module Dre
   module_function
@@ -29,6 +30,13 @@ module Dre
       DragonrubyEgg::Executable.dragonruby(@options[:path])
     elsif @options[:is_docs]
       DragonrubyEgg::Executable.docs()
+    elsif @options[:install]
+      if @options[:path]
+        DragonrubyEgg::Executable.install(@options[:install], @options[:path])
+      else
+        DragonrubyEgg::Event.print('WARNING', "A working path must " +
+          "be defined to install the module.")
+      end
     end
   end
 end

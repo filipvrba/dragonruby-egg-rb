@@ -2,7 +2,8 @@ module Dre
   @options = {
     is_docs: false,
     root_path: nil,
-    path: nil
+    path: nil,
+    install: nil
   }
   @options[:path] = OptionParser.last_arg if Dir.exist?(OptionParser.last_arg)
 
@@ -12,13 +13,10 @@ module Dre
       "Usage: #{APP_NAME} [options] [path]\n" +
       "\nOptions:"
     )
-    parser.on( "-h", "--help", "Show help" ) do
-      puts parser
-      exit
-    end
-    parser.on( "-v", "--version", "Show version" ) do
-      DragonrubyEgg::Event.print('VERSION', DragonrubyEgg::VERSION)
-      exit
+    parser.on( "install MODULE", "", "Installs the module in the working folder.\n" +
+               "(Example: install dr-core-rb,\n" +
+               "install filipvrba.dr-core-rb)\n" ) do |repo_module|
+      @options[:install] = repo_module
     end
     parser.on( "-d", "--docs", "Opens the documentation for DragonRuby\n" +
                                "in the main browser." ) do
@@ -30,6 +28,14 @@ module Dre
         "(Default: '#{@configuration.parse(:root_path)}')"
       ) do |path|
       @options[:root_path] = path
+    end
+    parser.on( "-h", "--help", "Show help" ) do
+      puts parser
+      exit
+    end
+    parser.on( "-v", "--version", "Show version" ) do
+      DragonrubyEgg::Event.print('VERSION', DragonrubyEgg::VERSION)
+      exit
     end
   end
 
