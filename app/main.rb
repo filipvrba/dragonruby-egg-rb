@@ -5,6 +5,7 @@ require 'json_parser'
 require_relative './configuration'
 require_relative './arguments'
 require_relative './inputs'
+require_relative './signals'
 
 module Dre
   module_function
