@@ -65,6 +65,9 @@ module DragonrubyEgg
         Event.print('INSTALL', "The '#{repo_module}' module " +
           "has been installed in this '.#{module_path.sub(path, '')}' folder.")
       end
+
+      IO.change_require(module_path, repo_module)
+      Event.print('INSTALL', "Require paths have been changed for this '#{repo_module}' module.")
     end
 
     def new_project name, path
