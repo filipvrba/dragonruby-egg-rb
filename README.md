@@ -71,5 +71,8 @@ Here you can find all available modules: https://dragonruby-egg-ui-rjs.vercel.ap
 > ### Info
 > If you want to add your own module to the page, read the [README](https://github.com/filipvrba/dragonruby-egg-ui-rjs/blob/main/README.md).
 
-## 7 Contributors
+## Tutorials
+- [Usage Tutorial](./docs/usage_tutorial.md)
+
+## Contributors
 - [Filip Vrba](https://github.com/filipvrba) - creator and maintainer
