@@ -1,6 +1,8 @@
 # DragonRuby-Egg (CLI)
 DragonRuby-Egg is a tool for managing DragonRuby and its modules. With this tool, you can easily create new projects and install modules for your existing projects. Additionally, it offers various commands for working with DragonRuby and its documentation.
 
+**Please note that this repository is now archived and no longer actively maintained.**
+
 ## Installation
 
 *To install DragonRuby-Egg, use the following command:*
